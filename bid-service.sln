@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bid-serviceAPI", "bid-serviceAPI\bid-serviceAPI.csproj", "{CF39993B-88B6-4FED-B251-30081DA7C73E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bid-serviceAPI.Test", "bid-serviceAPI.Test\bid-serviceAPI.Test.csproj", "{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF39993B-88B6-4FED-B251-30081DA7C73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF39993B-88B6-4FED-B251-30081DA7C73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF39993B-88B6-4FED-B251-30081DA7C73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF39993B-88B6-4FED-B251-30081DA7C73E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
