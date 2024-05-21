@@ -25,13 +25,13 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
     }
     subnets: [
       {
-        name: 'Subnet-1'
+        name: 'BidSubnet-1'
         properties: {
           addressPrefix: '10.0.0.0/24'
         }
       }
       {
-        name: 'Subnet-2'
+        name: 'BidSubnet-2'
         properties: {
           addressPrefix: '10.0.1.0/24'
         }
@@ -40,12 +40,11 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-04-01' = {
   }
 }
 
-
 resource forsogstorage 'Microsoft.Storage/storageAccounts@2023-04-01' = {
-  name: 'bicepbid'
-  location: resourceGroup()
+  name: storageAccountName
+  location: resourceGroup().location
   sku: {
-    name: 'bidserviceapi'
+    name: 'Standard_LRS' 
   }
-  kind: 'bidkind'
+  kind: 'StorageV2' 
 }
