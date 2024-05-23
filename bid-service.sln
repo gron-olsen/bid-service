@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bid-serviceAPI", "bid-serviceAPI\bid-serviceAPI.csproj", "{CF39993B-88B6-4FED-B251-30081DA7C73E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bid-service", "bid-service\bid-service.csproj", "{CF39993B-88B6-4FED-B251-30081DA7C73E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bid-serviceAPI.Test", "bid-serviceAPI.Test\bid-serviceAPI.Test.csproj", "{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bid-service.Test", "bid-service.Test\bid-service.Test.csproj", "{CFE2BE96-5FF4-4092-A20E-45472D7E90E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

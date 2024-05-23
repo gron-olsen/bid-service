@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\bid-serviceAPI\bid-serviceAPI.csproj" />
+    <ProjectReference Include="..\bid-service\bid-service.csproj" />
   </ItemGroup>
 
 </Project>

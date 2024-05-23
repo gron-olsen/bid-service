@@ -13,25 +13,24 @@ public class Worker : BackgroundService
     private readonly ILogger<Worker> _logger;
     private readonly IMongoDatabase _database;
     private ConnectionFactory factory = new ConnectionFactory();
+
+    public readonly IConfiguration _configuration;
+    public string BidCollection;
     private IConnection connection;
     private IModel channel;
-    private string BidCollection;
     public Worker(ILogger<Worker> logger, IConfiguration configuration)
     {
         _logger = logger;
-
-        // Get the RabbitMQ connection information from the configuration
-        string connectionString = configuration["rabbitmqUrl"] ?? "localhost";
-
+        _configuration = configuration;
         try
         {
-            _logger.LogInformation("Connecting to RabbitMQ at {0}:{1}", configuration["rabbitUrl"], configuration["rabbitMQPort"]);
+            _logger.LogInformation("Connecting to RabbitMQ at {0}:{1}", _configuration["rabbitmqUrl"], _configuration["rabbitMQPort"]);
             factory = new ConnectionFactory()
             {
-                HostName = configuration["rabbitUrl"] ?? "localhost",
-                Port = Convert.ToInt16(configuration["rabbitMQPort"] ?? "5672"),
-                UserName = configuration["rabbitmqUsername"] ?? "guest",
-                Password = configuration["rabbitmqUserpassword"] ?? "guest"
+                HostName = _configuration["rabbitmqUrl"] ?? "localhost",
+                Port = Convert.ToInt16(_configuration["rabbitMQPort"] ?? "5672"),
+                UserName = _configuration["rabbitmqUsername"] ?? "guest",
+                Password = _configuration["rabbitmqUserpassword"] ?? "guest"
             };
 
             connection = factory.CreateConnection();
@@ -46,22 +45,21 @@ public class Worker : BackgroundService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to connect to RabbitMQ at {0}:{1}", configuration["rabbitUrl"], configuration["rabbitMQPort"]);
+            _logger.LogError(ex, "Failed to connect to RabbitMQ at {0}:{1}", _configuration["rabbitmqUrl"], _configuration["rabbitMQPort"]);
             throw;
         }
 
-
         try
         {
-            _logger.LogInformation($"mongodb: {configuration["mongodb"]}");
+            _logger.LogInformation($"mongodb: {_configuration["mongodb"]}");
             // Create MongoDB database connection using configuration
-            var mongoClient = new MongoClient($"{configuration["mongodb"]}");
-            var database = mongoClient.GetDatabase(configuration["database"] ?? string.Empty);
-            BidCollection = configuration["auctionBidCol"] ?? string.Empty;
+            var mongoClient = new MongoClient(_configuration["mongodb"]);
+            var database = mongoClient.GetDatabase(_configuration["database"]);
+            BidCollection = (_configuration["auctionBidCol"]) ?? string.Empty;
         }
         catch (System.Exception ex)
         {
-            _logger.LogError(ex, $"Failed to access mongodb: {configuration["mongodb"]}");
+            _logger.LogError(ex, $"Failed to access mongodb: {_configuration["mongodb"]}");
             throw;
         }
     }
