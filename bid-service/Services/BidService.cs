@@ -22,9 +22,11 @@ public class Worker : BackgroundService
     {
         _logger = logger;
         _configuration = configuration;
+
         try
         {
             _logger.LogInformation("Connecting to RabbitMQ at {0}:{1}", _configuration["rabbitmqUrl"], _configuration["rabbitMQPort"]);
+            
             factory = new ConnectionFactory()
             {
                 HostName = _configuration["rabbitmqUrl"] ?? "localhost",
@@ -49,13 +51,14 @@ public class Worker : BackgroundService
             throw;
         }
 
+
         try
         {
             _logger.LogInformation($"mongodb: {_configuration["mongodb"]}");
             // Create MongoDB database connection using configuration
             var mongoClient = new MongoClient(_configuration["mongodb"]);
-            var database = mongoClient.GetDatabase(_configuration["database"]);
-            BidCollection = (_configuration["auctionBidCol"]) ?? string.Empty;
+            _database = mongoClient.GetDatabase(_configuration["database"]);
+            BidCollection = (_configuration["collection"]) ?? string.Empty;
         }
         catch (System.Exception ex)
         {
