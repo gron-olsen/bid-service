@@ -23,7 +23,7 @@ jobs:
       - name: Build Docker image
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        run: docker build . -f bid-serviceAPI/dockerfile --tag ${DOCKER_USER}/bid-service:latest  
+        run: docker build . -f bid-service/dockerfile --tag ${DOCKER_USER}/bid-service:latest  
 
       - name: Push Docker image
         env:
